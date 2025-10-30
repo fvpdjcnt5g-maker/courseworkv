@@ -133,6 +133,44 @@
           </div>
         </div>
       </div>
+        <!-- Cart page -->
+      <div v-else>
+        <h3 class="mb-3">Your Cart</h3>
+        <div v-if="cart.length === 0" class="alert alert-info">
+          Your cart is empty.
+        </div>
+
+        <ul class="list-group mb-4" v-else>
+          <li
+            v-for="(lesson, index) in cart"
+            :key="index"
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span>{{ lesson.topic }} ({{ lesson.location }})</span>
+            <div>
+              <span class="me-3">${{ lesson.price }}</span>
+              <button class="btn btn-sm btn-danger" @click="removeFromCart(index)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <h4>Total: ${{ cartTotal }}</h4>
+
+        <hr />
+
+        
+        <div
+          v-if="orderConfirmed"
+          class="alert alert-success mt-4"
+          role="alert"
+        >
+          ✅ Thank you, {{ order.name }}! Your order has been confirmed.
+        </div>
+      </div>
+    </div>
+  </div>
 
   
   <script>
