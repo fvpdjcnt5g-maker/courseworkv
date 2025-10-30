@@ -29,7 +29,7 @@
     "location": "Golders Green",
     "price": 120,
     "space": 8,
-    "image": "cs.jpg"
+    "image": "computer.png"
   },
   {
     "_id": "5",
@@ -37,7 +37,7 @@
     "location": "Camden",
     "price": 95,
     "space": 5,
-    "image": "biology.jpg"
+    "image": "biology.png"
   },
   {
     "_id": "6",
@@ -45,7 +45,7 @@
     "location": "Kilburn",
     "price": 85,
     "space": 7,
-    "image": "chemistry.jpg"
+    "image": "chemistry.png"
   },
   {
     "_id": "7",
@@ -53,7 +53,7 @@
     "location": "Swiss Cottage",
     "price": 70,
     "space": 10,
-    "image": "art.jpg"
+    "image": "art$design.png"
   },
   {
     "_id": "8",
