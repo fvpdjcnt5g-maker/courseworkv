@@ -21,7 +21,7 @@
     "location": "Brent Cross",
     "price": 80,
     "space": 6,
-    "image": "englishlit.png"
+    "image": "literature.png"
   },
   {
     "_id": "4",
@@ -77,6 +77,6 @@
     "location": "Tottenham",
     "price": 75,
     "space": 5,
-    "image": "languages.jpg"
+    "image": "languages.png"
   }
 ]
