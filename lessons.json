@@ -13,7 +13,7 @@
     "location": "Colindale",
     "price": 90,
     "space": 6,
-    "image": "physics.jpg"
+    "image": "physics.png"
   },
   {
     "_id": "3",
@@ -21,7 +21,7 @@
     "location": "Brent Cross",
     "price": 80,
     "space": 6,
-    "image": "english.jpg"
+    "image": "englishlit.png"
   },
   {
     "_id": "4",
@@ -61,7 +61,7 @@
     "location": "Finchley",
     "price": 60,
     "space": 9,
-    "image": "music.jpg"
+    "image": "music.png"
   },
   {
     "_id": "9",
@@ -69,7 +69,7 @@
     "location": "Maida Vale",
     "price": 65,
     "space": 4,
-    "image": "drama.jpg"
+    "image": "drama.png"
   },
   {
     "_id": "10",
