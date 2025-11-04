@@ -18,36 +18,137 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
   <style>
+    /* ===== Color Palette from reference =====
+       #ffffff  (white)
+       #676f9d  (light blue)
+       #424769  (medium blue)
+       #2d3250  (dark blue)
+       #f9b17a  (accent peach)
+    ========================================== */
+
     body {
-      background-color: #f9fafc;
+      background-color: #2d3250;
+      color: #ffffff;
       padding: 20px;
+      font-family: 'Raleway', sans-serif;
     }
-    .card {
-      border-radius: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
+
     .navbar {
-      margin-bottom: 30px;
+      background-color: #424769 !important;
       border-radius: 12px;
+      margin-bottom: 30px;
     }
-    .disabled-btn {
-      opacity: 0.6;
-      cursor: not-allowed;
+
+    .navbar-brand {
+      color: #f9b17a !important;
+      font-weight: 600;
     }
+
+    .btn {
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-light {
+      background-color: #f9b17a;
+      color: #2d3250;
+      border: none;
+    }
+
+    .btn-light:hover {
+      background-color: #ffd0a3;
+    }
+
+    .btn-primary {
+      background-color: #676f9d;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #424769;
+    }
+
+    .btn-success {
+      background-color: #f9b17a;
+      border: none;
+      color: #2d3250;
+    }
+
+    .btn-success:hover {
+      background-color: #ffd0a3;
+    }
+
+    .btn-danger {
+      background-color: #676f9d;
+      border: none;
+    }
+
+    .btn-danger:hover {
+      background-color: #424769;
+    }
+
+    .card {
+      background-color: #424769;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+    }
+
     .lesson-img {
       height: 160px;
       object-fit: cover;
       border-radius: 10px;
     }
-    .container {
-      max-width: 1200px;
+
+    .form-control, .form-select {
+      background-color: #676f9d;
+      border: none;
+      color: #ffffff;
+    }
+
+    .form-control::placeholder {
+      color: #dcdcdc;
+    }
+
+    .form-control:focus, .form-select:focus {
+      box-shadow: 0 0 0 3px #f9b17a55;
+      background-color: #676f9d;
+      color: #ffffff;
+    }
+
+    .list-group-item {
+      background-color: #424769;
+      color: #ffffff;
+      border: none;
+    }
+
+    .alert-info {
+      background-color: #676f9d;
+      color: #ffffff;
+      border: none;
+    }
+
+    .alert-success {
+      background-color: #f9b17a;
+      color: #2d3250;
+      border: none;
+    }
+
+    .disabled-btn {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    h3, h4, h5, label {
+      color: #f9b17a;
     }
   </style>
 </head>
 <body>
   <div id="app">
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+    <nav class="navbar navbar-expand-lg navbar-dark px-4">
       <a class="navbar-brand fw-bold" href="#">Lesson Booking</a>
       <div class="ms-auto">
         <button
@@ -68,7 +169,6 @@
     </nav>
 
     <div class="container">
-    
       <!-- Lessons page -->
       <div v-if="showLessons">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -133,7 +233,8 @@
           </div>
         </div>
       </div>
-         <!-- Cart page -->
+
+      <!-- Cart page -->
       <div v-else>
         <h3 class="mb-3">Your Cart</h3>
         <div v-if="cart.length === 0" class="alert alert-info">
@@ -157,7 +258,6 @@
         </ul>
 
         <h4>Total: ${{ cartTotal }}</h4>
-
         <hr />
 
         <h5>Checkout</h5>
@@ -182,6 +282,7 @@
               required
             />
           </div>
+          </div>
           <button
             type="submit"
             class="btn btn-success w-100"
@@ -201,7 +302,7 @@
       </div>
     </div>
   </div>
-  
+
   <script>
     new Vue({
       el: '#app',
@@ -217,13 +318,10 @@
       },
       computed: {
         filteredAndSortedLessons() {
-          // Filter
           let filtered = this.lessons.filter(l =>
             l.topic.toLowerCase().includes(this.searchText.toLowerCase()) ||
             l.location.toLowerCase().includes(this.searchText.toLowerCase())
           );
-
-          // Sort
           return filtered.sort((a, b) => {
             let mod = this.sortDir === 'asc' ? 1 : -1;
             if (a[this.sortAttr] < b[this.sortAttr]) return -1 * mod;
