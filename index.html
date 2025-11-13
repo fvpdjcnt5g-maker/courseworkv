@@ -18,75 +18,55 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
   <style>
-    /* ===== Color Palette from reference =====
-       #ffffff  (white)
-       #676f9d  (light blue)
-       #424769  (medium blue)
-       #2d3250  (dark blue)
-       #f9b17a  (accent peach)
-    ========================================== */
-
     body {
       background-color: #2d3250;
       color: #ffffff;
       padding: 20px;
       font-family: 'Raleway', sans-serif;
     }
-
     .navbar {
       background-color: #424769 !important;
       border-radius: 12px;
       margin-bottom: 30px;
     }
-
     .navbar-brand {
       color: #f9b17a !important;
       font-weight: 600;
     }
-
     .btn {
       border-radius: 10px;
       transition: 0.3s;
     }
-
     .btn-light {
       background-color: #f9b17a;
       color: #2d3250;
       border: none;
     }
-
     .btn-light:hover {
       background-color: #ffd0a3;
     }
-
     .btn-primary {
       background-color: #676f9d;
       border: none;
     }
-
     .btn-primary:hover {
       background-color: #424769;
     }
-
     .btn-success {
       background-color: #f9b17a;
       border: none;
       color: #2d3250;
     }
-
     .btn-success:hover {
       background-color: #ffd0a3;
     }
-
     .btn-danger {
       background-color: #676f9d;
       border: none;
     }
-
     .btn-danger:hover {
       background-color: #424769;
     }
-
     .card {
       background-color: #424769;
       border: none;
@@ -94,52 +74,43 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       color: #ffffff;
     }
-
     .lesson-img {
       height: 160px;
       object-fit: cover;
       border-radius: 10px;
     }
-
     .form-control, .form-select {
       background-color: #676f9d;
       border: none;
       color: #ffffff;
     }
-
     .form-control::placeholder {
       color: #dcdcdc;
     }
-
     .form-control:focus, .form-select:focus {
       box-shadow: 0 0 0 3px #f9b17a55;
       background-color: #676f9d;
       color: #ffffff;
     }
-
     .list-group-item {
       background-color: #424769;
       color: #ffffff;
       border: none;
     }
-
     .alert-info {
       background-color: #676f9d;
       color: #ffffff;
       border: none;
     }
-
     .alert-success {
       background-color: #f9b17a;
       color: #2d3250;
       border: none;
     }
-
     .disabled-btn {
       opacity: 0.5;
       cursor: not-allowed;
     }
-
     h3, h4, h5, label {
       color: #f9b17a;
     }
@@ -282,7 +253,7 @@
               required
             />
           </div>
-          </div>
+
           <button
             type="submit"
             class="btn btn-success w-100"
@@ -347,9 +318,22 @@
           this.cart.splice(index, 1);
         },
         checkout() {
-          if (!this.isFormValid) return alert('Please fill valid details.');
+          if (!this.isFormValid) {
+            alert('Please fill in valid details.');
+            return;
+          }
+
+          // Clear the cart and confirm order
           this.cart = [];
           this.orderConfirmed = true;
+
+          // Show success alert
+          alert('You have successfully checked out!');
+
+          // Reset form fields
+          this.order = { name: '', phone: '' };
+
+          // Return to lessons page
           this.showLessons = true;
         },
         imgError(event) {
